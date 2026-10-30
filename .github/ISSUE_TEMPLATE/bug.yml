@@ -1,0 +1,78 @@
+name: 报个问题
+description: 跑不通、结果不对、报错了，用这个
+title: "[问题] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        先在技能包目录下跑一遍：
+        ```
+        python scripts/doctor.py --work-dir <你这次的 work-dir>
+        ```
+        把输出整段粘到最后一栏。只读、不联网、不用装东西。
+
+  - type: input
+    id: version
+    attributes:
+      label: 包版本
+      description: doctor 报告里「包版本」那一行
+      placeholder: v1.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: 卡在哪一步
+      options:
+        - 阶段 0 环境与依赖
+        - 阶段 1 拆 TDoc / 读原文
+        - 阶段 2 归属与判定
+        - 阶段 3 Issue 骨架
+        - 阶段 4 候选段
+        - 阶段 5 观点归并
+        - 阶段 6 切片归一
+        - 阶段 7 组装草稿
+        - 阶段 8 校验与台账
+        - 不确定
+    validations:
+      required: true
+
+  - type: input
+    id: code
+    attributes:
+      label: 错误码
+      description: 报错里 E- 或 W- 开头那串，多个用空格隔开。不知道就留空
+      placeholder: E-REF-GHOST
+
+  - type: textarea
+    id: what
+    attributes:
+      label: 现象
+      description: 你做了什么 / 期望什么 / 实际得到什么。三句话即可
+      placeholder: |
+        我跑了 assemble_final，期望生成报告；
+        结果在 deliver 目录下什么都没有，终端里出现 E-REF-GHOST。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: material
+    attributes:
+      label: 能否提供材料（脱敏后的 TDoc 片段）
+      description: 决定作者要不要开口问你，不是现在就发
+      options:
+        - 可以，私下发
+        - 不方便
+    validations:
+      required: true
+
+  - type: textarea
+    id: report
+    attributes:
+      label: doctor.py 报告
+      description: 整段粘贴，不用删改（能不能定位，八成看这一栏）
+      render: text
+    validations:
+      required: true

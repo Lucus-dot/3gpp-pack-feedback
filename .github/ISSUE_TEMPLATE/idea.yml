@@ -1,0 +1,52 @@
+name: 提个需求
+description: 想要某个能力，或者觉得某一步太绕
+title: "[需求] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        需求不一定做。写清"你现在怎么绕过去的"，比写"希望有个功能"有用得多——
+        它说明这个痛点是真的。
+
+  - type: textarea
+    id: pain
+    attributes:
+      label: 你现在怎么做的
+      description: 手工补了什么、跳过了什么、哪一步最烦
+      placeholder: |
+        每次报告出来之后，我都要手工把附录里的待裁决项复制到另一张表，
+        不然开会时找不到对应段落。
+    validations:
+      required: true
+
+  - type: textarea
+    id: want
+    attributes:
+      label: 你希望它变成什么样
+      placeholder: 生成报告时顺带出一份只有待裁决项的 csv。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: freq
+    attributes:
+      label: 多久碰一次
+      options:
+        - 每次都用
+        - 每周一次
+        - 每月一两次
+        - 偶尔
+    validations:
+      required: true
+
+  - type: dropdown
+    id: blocking
+    attributes:
+      label: 不解决会怎样
+      options:
+        - 卡住，没法继续
+        - 能绕过去，但很烦
+        - 只是锦上添花
+    validations:
+      required: true
